@@ -29,7 +29,7 @@ products = [
 import datetime as dt
 checkout_time = dt.datetime.now()
 
-total_price = 0
+subtotal_price = 0
 selected_ids = []
 
 while True:
@@ -67,20 +67,25 @@ print("SELECTED PRODUCTS: ")
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
-    total_price = total_price + matching_product["price"]
+    subtotal_price = subtotal_price + matching_product["price"]
     #print("   *" + matching_product["name"] + " " + str(matching_product["price"]))
     print("   *" + matching_product["name"] + " (" + to_usd(matching_product["price"]) + ")")
 
 #The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
 #print("TOTAL PRICE: " + str(total_price)) 
-print("TOTAL PRICE: " + to_usd(total_price)) 
+print("---------------------------------")
+print("SUBTOTAL: " + to_usd(subtotal_price)) 
 
-
-#DONE A grocery store name of your choice
-#DONE A grocery store phone number and/or website URL and/or address of choice
-#DONE The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
-#DONE The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
-#DONE The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
 #The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
+tax_rate = 0.0875
+tax_price = tax_rate * subtotal_price
+print("TAX: " + to_usd(tax_price))
+
 #The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
+total_price = subtotal_price + tax_price
+print("TOTAL: "+ to_usd(total_price)) 
+
 #A friendly message thanking the customer and/or encouraging the customer to shop again
+print("---------------------------------")
+print("THANK YOU FOR SHOPPING, SEE YOU AGAIN SOON!")
+print("---------------------------------")
