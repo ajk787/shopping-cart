@@ -23,7 +23,6 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-#print(products)
 
 #INFO CAPTURE / INPUTS
 import datetime as dt
@@ -37,26 +36,28 @@ while True:
         if selected_id == "DONE":
             break
         else:
-            #matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-            #matching_product = matching_products[0]
-            #total_price = total_price + matching_product["price"]
-            #print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
-            selected_ids.append(selected_id)
+            try:
+                matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+                matching_product = matching_products[0] 
+                selected_ids.append(selected_id)
+            except IndexError as e:
+                print("Sorry, product not found. Please select a different one")
+
 
 #INFO DISPLAY / OUTPUT 
 
 #A grocery store name of your choice
 print("---------------------------------")
-print("AMANDA'S HEALTHY GROCERY NYC")
+print("AMANDA'S HEALTH GROCERY NYC")
 
 #A grocery store phone number and/or website URL and/or address of choice
 print("WWW.AMANDA-HEALTH-GROCERY-NYC.COM")
+print("Tel. (212) 123-4567")
 print("---------------------------------")
 
 #The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
 print("CHECKOUT AT: " + checkout_time.strftime("%Y-%m-%d %I:%M %p")) 
 print("---------------------------------")
-
 
 #The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
 def to_usd(my_price):
@@ -68,7 +69,6 @@ for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     subtotal_price = subtotal_price + matching_product["price"]
-    #print("   *" + matching_product["name"] + " " + str(matching_product["price"]))
     print("   *" + matching_product["name"] + " (" + to_usd(matching_product["price"]) + ")")
 
 #The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
