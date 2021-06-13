@@ -40,9 +40,8 @@ while True:
                 matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
                 matching_product = matching_products[0] 
                 selected_ids.append(selected_id)
-            except IndexError as e:
+            except IndexError:
                 print("Sorry, product not found. Please select a different one")
-
 
 #INFO DISPLAY / OUTPUT 
 
