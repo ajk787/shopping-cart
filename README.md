@@ -4,8 +4,9 @@
 (https://github.com/prof-rossetti/intro-to-python/tree/main/projects/shopping-cart)
 
 ## Installation
+Clone or download this repo onto your local computer.
+Then navigate there from the command line (subsequent commands assume you are running them from the local repository's root directory):
 
-Project repository: 
 '''sh
 cd shopping-cart
 '''
@@ -14,6 +15,6 @@ cd shopping-cart
 
 Run the program:
 
-'''py
+'''sh
 python shopping_cart.py
 '''
